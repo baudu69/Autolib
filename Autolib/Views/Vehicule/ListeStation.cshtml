@@ -1,0 +1,47 @@
+﻿@model List<Station>
+       
+@{
+   Layout = "~/Views/Shared/_Layout.cshtml";
+   ViewData["Title"] = "Stations";
+}
+
+<h2>Liste des stations</h2>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Numero</th>
+        <th scope="col">Ville</th>
+        <th scope="col">Code postal</th>
+        <th scope="col">Afficher les véhicules</th>
+    </tr>
+    </thead>
+   <tbody>
+   @foreach (var item in Model)
+   {
+       <tr>
+           <th scope="row">
+               @Html.DisplayTextFor(modelItem => item.idStation)
+           </th>
+           <td>
+               @Html.DisplayTextFor(modelItem => item.adresse)
+           </td>
+           <td>
+               @Html.DisplayTextFor(modelItem => item.numero)
+           </td>
+           <td>
+               @Html.DisplayTextFor(modelItem => item.ville)
+           </td>
+           <td>
+               @Html.DisplayTextFor(modelItem => item.code_postal)
+           </td>
+           <td>
+               @Html.ActionLink("Afficher les véhicules", "Index", "Vehicule", new { id= item.idStation })
+           </td>
+           
+       </tr>
+   }
+   </tbody>
+</table>
+       

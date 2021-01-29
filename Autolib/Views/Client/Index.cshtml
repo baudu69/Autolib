@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Connexion";
+}
+
+<h2>
+    Connexion
+</h2>
+
+<form asp-controller="Client" asp-action="Details" method="post">
+    <div class="form-group">
+        <label for="idClient">Numéro client : </label>
+        <input type="text" id="idClient" class="form-control" name="idClient"/>
+    </div>
+    <div class="form-group">
+        <label for="mdpClient">Mot de passe client : </label>
+        <input type="password" id="mdpClient" class="form-control" name="mdpClient"/>
+    </div>
+    <input type="submit" value="Connexion">
+</form>

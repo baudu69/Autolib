@@ -1,0 +1,46 @@
+﻿@model List<Vehicule>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Vehicules";
+}
+
+<h2>Liste des vehicules</h2>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Borne</th>
+        <th scope="col">Vehicule</th>
+        <th scope="col">Categorie</th>
+        <th scope="col">Batterie</th>
+        <th scope="col">Disponibilité</th>
+        <th scope="col">Réserver</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th scope="row">
+                @Html.DisplayTextFor(modelItem => item.laBorne.IdBorne)
+            </th>
+            <td>
+                @Html.DisplayTextFor(modelItem => item.Type.Type_vehicule)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem => item.Type.Categorie)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem => item.EtatBatterie)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem => item.Disponibilite)
+            </td>
+            <td>
+                @Html.ActionLink("Réserver", "Reserver", "Vehicule", new { id= item.IdVehicule })
+            </td>
+            
+        </tr>
+    }
+    </tbody>
+</table>

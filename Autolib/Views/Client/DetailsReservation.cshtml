@@ -1,0 +1,42 @@
+﻿@model List<Reservation>
+       
+@{
+   Layout = "~/Views/Shared/_Layout.cshtml";
+   ViewData["Title"] = "Historique des réservations";
+}
+
+<h2>Historique des réservations</h2>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Id Véhicule</th>
+        <th scope="col">Type véhicule</th>
+        <th scope="col">Catégorie</th>
+        <th scope="col">Date de réservation</th>
+        <th scope="col">Date échéance</th>
+    </tr>
+    </thead>
+   <tbody>
+   @foreach (var item in Model)
+   {
+       <tr>
+           <th scope="row">
+               @Html.DisplayTextFor(modelItem => item.leVehicule.IdVehicule)
+           </th>
+           <td>
+               @Html.DisplayTextFor(modelItem => item.leVehicule.Type.Type_vehicule)
+           </td>
+           <td>
+               @Html.DisplayTextFor(modelItem => item.leVehicule.Type.Categorie)
+           </td>
+           <td>
+               @Html.DisplayTextFor(modelItem => item.Date_reservation)
+           </td>
+           <td>
+               @Html.DisplayTextFor(modelItem => item.Date_echeance)
+           </td>
+       </tr>
+   }
+   </tbody>
+</table>
+       

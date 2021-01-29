@@ -1,0 +1,12 @@
+﻿@model Exception
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";;
+}
+
+<h1>Erreur</h1>
+<p>
+    <span>Code de l'erreur : @Html.DisplayFor(modelItem =>Model.HResult)</span><br/>
+    <span>Message : @Html.DisplayFor(modelItem =>Model.Message)</span><br/>
+    <span>Source : @Html.DisplayFor(modelItem =>Model.Source)</span><br/>
+</p>

@@ -1,0 +1,75 @@
+﻿@model List<Station>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Points";
+}
+
+
+<h2>Liste points</h2>
+
+
+<script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOtN6TTt0MrnmRwPv2FUApW4LQ7MIK8oI&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <style type="text/css">
+      /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;
+        /* The height is 400 pixels */
+        width: 100%;
+        /* The width is the width of the web page */
+      }
+    </style>
+<script>
+      // Initialize and add the map
+      function initMap() {
+        // The location of Uluru
+        const uluru = { lat: 45.747440, lng: 4.877112};
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 12,
+          center: uluru,
+        });
+        // The marker, positioned at Uluru
+        /*const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+        });*/
+        var latitudePoint = [];
+        var longitudePoint = [];
+        var voituresDispo = [];
+        var voituresTot = [];
+        
+        @foreach (var d in Model)
+        {
+            @:latitudePoint.push("@d.Latitude");
+            @:longitudePoint.push("@d.Longitude");
+            @:voituresDispo.push("@d.nbVoituresLibres");
+            @:voituresTot.push("@d.nbPlaces");
+        }
+        
+       
+        var latitudePointDec = [];
+        var longitudePointDec = [];
+        for (var i=0; i<latitudePoint.length; i++) {
+            latitudePointDec.push(parseFloat(latitudePoint[i].replace(',', '.')));
+            longitudePointDec.push(parseFloat(longitudePoint[i].replace(',', '.')));
+        }
+        console.log(latitudePoint)
+        console.log(latitudePointDec)
+        
+        for (var i=0; i<latitudePoint.length; i++) {
+            var unePosition= {lat: latitudePointDec[i], lng: longitudePointDec[i]}
+            new google.maps.Marker({
+                      position: unePosition,
+                      map: map,
+                      label: { color: '#00aaff', fontWeight: 'bold', fontSize: '14px', text: voituresDispo[i]+'/'+voituresTot[i]}
+                    });
+        }
+        
+        
+        
+      }
+    </script>
+<div id="map"></div>

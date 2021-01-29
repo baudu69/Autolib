@@ -1,0 +1,18 @@
+﻿@model Client
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Details";
+}
+
+<h2>Mes informations</h2>
+<form asp-controller="Client" asp-action="updateInfo" method="post">
+    <label for="nomClient">Nom : </label>
+    <input type="text" id="nomClient" name="nomClient" value="@Html.DisplayFor(modelItem =>Model.Nom)"/>
+    <label for="prenomClient">Prénom : </label>
+    <input type="text" id="prenomClient" name="prenomClient" value="@Html.DisplayFor(modelItem =>Model.Prenom)"/>
+    <input type="submit" value="Valider les changements">
+</form>
+@Html.ActionLink("Afficher les véhicules", "DetailsReservation", "Client")
+
+

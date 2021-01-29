@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Inscription";
+}
+
+<h2>
+    Inscription
+</h2>
+
+<form asp-controller="Client" asp-action="inscription" method="post">
+    <div class="form-group">
+        <label for="nomClient">Nom : </label>
+        <input type="text" id="nomClient" class="form-control" name="nomClient"/>     
+    </div>
+    <div class="form-group">
+        <label for="prenomClient">Prénom : </label>
+        <input type="text" id="prenomClient" class="form-control" name="prenomClient"/>
+    </div>
+    <div class="form-group">
+        <label for="naissanceClient">Date de naissance : </label>
+        <input type="date" id="naissanceClient" class="form-control" name="naissanceClient"/>
+    </div>
+    <div class="form-group">
+        <label for="mdpClient">Mot de passe :</label>
+        <input type="password" id="mdpClient" class="form-control" name="mdpClient" onkeyup="checkPassword()" />
+    </div>
+    <div class="form-group">
+        <label for="validMdpClient">Mot de passe :</label>
+        <input type="password" id="validMdpClient" class="form-control" name="validMdpClient" onkeyup="checkPassword()" />
+    </div>
+    
+    <input type="submit" id="valider" value="Valider l'inscription">
+</form>
+<script type="text/javascript">
+    let champMdp1 = document.getElementById('mdpClient');
+    let champMdp2 = document.getElementById('validMdpClient');
+    let btnValider = document.getElementById('valider');
+    
+    function checkPassword() {
+        let mdp1 = champMdp1.value;
+        let mdp2 = champMdp2.value;
+        console.log(mdp1+','+mdp2);
+        if (mdp1 === mdp2) {
+            btnValider.disabled = false;
+        } else {
+            btnValider.disabled = true;
+        }
+    }
+</script>
